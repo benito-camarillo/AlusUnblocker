@@ -1,2 +1,0 @@
-// RAINBOW VOMIT by wearr
-
