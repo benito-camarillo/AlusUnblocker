@@ -11,16 +11,7 @@
     <link rel="icon" href="./img/icon.svg">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png"/>
     <link rel="manifest" href="/manifest.json">
-    <script>
-        if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/pwabuilder-sw.js').then((reg) => {
-            console.log('Service worker registered.', reg);
-            });
-        });
-    }   
-    </script>
-<script src="./loadScript.js"></script>
+    <script src="./js/site/loadScript.js"></script>
     <script>
 if ( window.location !== window.parent.location ) { // In a frame
         loadJS("./settings_frame.js", false)
@@ -38,10 +29,10 @@ if ( window.location !== window.parent.location ) { // In a frame
 </head>
 <body id="body">
 <script src="./vendor/aos/aos.js"></script>
-<script src="./toggles.js"></script>
-<script src="./main.js"></script> <!--header moment-->
-<script src="./header.js"></script>
-<script src="./themes.js"></script>
+<script src="./js/site/toggles.js"></script>
+<script src="./js/site/main.js"></script> <!--header moment-->
+<script src="./js/site/header.js"></script>
+<script src="./js/site/themes.js"></script>
 <div id="main">
 <div class="top-header" data-aos="fade-down" data-aos-duration="1000">
     <div id="title-background" class="title-background"><a id="nav-toggle" class="mobile-toggle" onclick="openNav()"><svg class="menu-bar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg></a></div>
@@ -61,9 +52,10 @@ if ( window.location !== window.parent.location ) { // In a frame
   </div>
 </div>
 <div class="main-content">
-    <h1 id="title-text" class="title-text fade-in">Alu's<br>Unblocker</h1>
-    <h4 id="subtitle-text" class="subtitle-text fade-in">Alu's Unblocker is an advanced proxy service that features many different forms of exploits and services for use in the classroom.</h4>
-    <a id="proxies-button" class="proxies-button" href="./proxies">Proxies</a>
+    <h1 id="title-text" class="title-text fade-in">Alu's Unblocker</h1>
+    <form>
+        <input placeholder="Enter a URL...">
+    </form>
 </div>
 <div class="mid-content">
     <div id="card" class="card">
@@ -85,24 +77,46 @@ if ( window.location !== window.parent.location ) { // In a frame
 </div>
 <br>
 </div>
+<script src="/uv/uv.bundle.js"></script>
+<script src="/uv/uv.config.js"></script>
+<script>
+    const form = document.querySelector('form');
+    const input = document.querySelector('input');
+
+    window.navigator.serviceWorker.register('/sw.js', {
+            scope: __uv$config.prefix
+    })
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+            let url = input.value.trim();
+            if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
+            else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
+            window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
+    });
+
+    function isUrl(val = ''){
+        if (/^http(s?):\/\//.test(val) || val.includes('.') && val.substr(0, 1) !== ' ') return true;
+        return false;
+    };
+</script>
 <div id="footer">
 <div class="footerflex">
     <div class="footerbrand">
         <h3><a href="/">Alu's Unblocker</a></h3>
-        <p>Made with ❤️ by <a href="#">wearr</a></p>
+        <p>Made with ❤️ by <a target="_black" href="https://wearr.dev">wearr</a></p>
     </div>
     <div class="footerlist">
         <h3>Services</h3>
         <ul>
-            <li><a target="_blank" href="https://github.com/titaniumnetwork-dev/Ultraviolet">Ultraviolet</a></li>
-            <li><a target="_blank" href="https://github.com/binary-person/rammerhead">Rammerhead</a></li>
+            <li><a target="_blank" rel=”noopener noreferrer” href="https://github.com/titaniumnetwork-dev/Ultraviolet">Ultraviolet</a></li>
+            <li><a target="_blank" rel=”noopener noreferrer” href="https://github.com/binary-person/rammerhead">Rammerhead</a></li>
         </ul>
     </div>
     <div class="footerlist">
         <h3>Socials</h3>
         <ul>
-            <li><a target="_blank" href="https://github.com/titaniumnetwork-dev/Holy-Unblocker">GitHub</a></li>
-            <li><a href="/terms.html">Instagram</a></li>
+            <li><a target="_blank" rel=”noopener noreferrer” href="https://github.com/titaniumnetwork-dev/Holy-Unblocker">GitHub</a></li>
             <div class="tooltip">
                 <span class="tooltiptext" id="myTooltip">Copy</span>
                 <li><a onclick="copyDiscord();" onmouseout="outFunc();" class="discord-text">Discord</a></li>

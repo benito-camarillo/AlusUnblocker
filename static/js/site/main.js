@@ -50,7 +50,7 @@ function hideMobileNav() {
 }
 function copyDiscord() {
     var tooltip = document.getElementById("myTooltip")
-    navigator.clipboard.writeText("wearr#4222");
+    navigator.clipboard.writeText("wearr.");
     tooltip.innerHTML = "Copied!"
 }
 function outFunc() {

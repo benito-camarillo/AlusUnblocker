@@ -12,7 +12,23 @@
   .proxies-button:hover {
     background-color: #393b3e;
     color: rgb(228, 228, 228);
-}
+  }
+
+  input {
+    background-color: #393b3e;
+    color: #D8DEE9;
+    border: 5px solid white;
+    border-radius: 30px;
+    padding: 15px;
+    padding-right: 80px;
+    -webkit-transition: 400ms ease-out;
+    transition: 400ms ease-out;
+    outline: none;
+  }
+
+  input::placeholder {
+      color: #D8DEE9;
+  }
   
   .get-involved {
     width: 100%;
