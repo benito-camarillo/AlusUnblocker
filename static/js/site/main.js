@@ -49,11 +49,11 @@ function hideMobileNav() {
     }, 400);
 }
 function copyDiscord() {
-    var tooltip = document.getElementById("myTooltip")
+    var tooltip = document.getElementById("discord-tooltip")
     navigator.clipboard.writeText("wearr.");
     tooltip.innerHTML = "Copied!"
 }
 function outFunc() {
-    var tooltip = document.getElementById("myTooltip");
+    var tooltip = document.getElementById("discord-tooltip");
     tooltip.innerHTML = "Copy";
 }

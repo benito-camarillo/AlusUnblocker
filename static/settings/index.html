@@ -33,9 +33,9 @@ if ( window.location !== window.parent.location ) { // In a frame
 } else { // Not in a frame
     if (localStorage.getItem('windowCloak') == "1") { // Setting "windowCloak" is enabled
         var x = window.open('')
-        x.document.write('<iframe src="https://alusunblocker.gq" style="position: absolute; top: 0; left: 0; rig>
-        x.document.write('<script src="./settings_frame.js">')
-        window.location.href = "https://google.com"
+        x.document.write(`<iframe src=${window.location.href} style="position: absolute; top: 0; left: 0; rig>`)
+        // window.location.href = "https://google.com"
+        window.close();
     } else { // Setting "windowCloak" is not enabled
 
     }
@@ -156,7 +156,7 @@ if ( window.location !== window.parent.location ) { // In a frame
                 <li><a target="_blank" href="https://github.com/titaniumnetwork-dev/Holy-Unblocker">GitHub</a></li>
                 <li><a href="/terms.html">Instagram</a></li>
                 <div class="tooltip">
-                    <span class="tooltiptext" id="myTooltip">Copy</span>
+                    <span class="tooltiptext" id="discord-tooltip">Copy</span>
                     <li><a onclick="copyDiscord();" onmouseout="outFunc();" class="discord-text">Discord</a></li>
                 </div>
             </ul>
