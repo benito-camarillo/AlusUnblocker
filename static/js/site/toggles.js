@@ -1,6 +1,3 @@
-window.onload = (event) => { 
-
-}
 let footerHidden = false;
 function checkedTwo() {
     if (checkboxTwo.checked !== true) {

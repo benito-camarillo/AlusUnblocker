@@ -1,8 +1,18 @@
+let navOpen = false;
+
+function toggleNav() {
+  if (navOpen == false) {
+        document.getElementById("sidenav").style.width = "300px";
+      navOpen = true;
+  } else {
+      document.getElementById("sidenav").style.width = "0%";
+      navOpen = false;
+  }
+}
+
 function openNav() {
     document.getElementById("sidenav").style.width = "300px";
-  }
-  
-  /* Set the width of the side navigation to 0 */
-  function closeNav() {
+}
+function closeNav() {
     document.getElementById("sidenav").style.width = "0%";
 }
